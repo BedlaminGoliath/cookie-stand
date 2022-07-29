@@ -1,0 +1,30 @@
+#head
+{
+text-align: center;
+font-family: 'Open Sans', sans-serif;
+font-size: 115px;
+color: #d97e8e;
+text-shadow: 2px 4px #583138;
+}
+img
+{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+body
+{
+    background-image: linear-gradient(rgb(53, 177, 240), rgb(5, 21, 137));
+    /* border-style: solid;5px; */
+    border: solid #416420 8px;
+/* }
+li 
+{
+    text-align: center;
+    display: inline-block;
+    color: rgb(124, 63, 22);
+    border: groove rgb(168, 100, 168)  1px;
+    padding: 0px 16px
+    
+} */
