@@ -1,4 +1,5 @@
 'use strict';
+// create a random number generator with the parameters being min and max cust
 function randomNumberCustomers(minCust, maxCust){
   return Math.floor(Math.random() * (maxCust - minCust + 1) + minCust);
 }
@@ -11,6 +12,7 @@ function randomNumberCustomers(minCust, maxCust){
 
 // locations
 let storeHours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm','1pm', '2pm', '3pm','4pm', '5pm', '6pm', '7pm'];
+let hourByHours = storeHours.length;
 
 
 //  created random number function
@@ -19,6 +21,7 @@ let storeHours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm','1pm', '2pm
 
 // have ul for each shop in html
 
+// creat object lit. with function
 let seattle = {
   minCust: 23,
   maxCust: 65 ,
@@ -37,10 +40,10 @@ let seattle = {
     let list = document.getElementById('seattle');
     for (let i = 0;i< storeHours.length ; i++){
       let li = document.createElement('li');
-      li.textContent= this.avgSales[i];
+      li.innerText = ` ${this.avgSales[i]} cookies`;
       list.appendChild(li);
     }
-    
+
   }
   // console.log(avgSales)
 };
@@ -65,7 +68,7 @@ let tokyo = {
     let list = document.getElementById('tokyo');
     for (let i = 0;i< storeHours.length ; i++){
       let li = document.createElement('li');
-      li.textContent= this.avgSales[i];
+      li.innerText = ` ${this.avgSales[i]} cookies`;
       list.appendChild(li);
     }
     console.log(list);
@@ -91,7 +94,7 @@ let dubai = {
     let list = document.getElementById('dubai');
     for (let i = 0;i< storeHours.length ; i++){
       let li = document.createElement('li');
-      li.textContent= this.avgSales[i];
+      li.innerText =` ${this.avgSales[i]} cookies`;
       list.appendChild(li);
     }
   }
@@ -116,7 +119,7 @@ let paris = {
     let list = document.getElementById('paris');
     for (let i = 0;i< storeHours.length ; i++){
       let li = document.createElement('li');
-      li.textContent= this.avgSales[i];
+      li.innerText =` ${this.avgSales[i]} cookies`;
       list.appendChild(li);
     }
   }
@@ -141,7 +144,7 @@ let lima = {
     let list = document.getElementById('lima');
     for (let i = 0;i< storeHours.length ; i++){
       let li = document.createElement('li');
-      li.textContent= this.avgSales[i];
+      li.innerText =` ${this.avgSales[i]} cookies`;
       list.appendChild(li);
     }
   }
