@@ -1,2 +1,4 @@
-# cookie-stand
-cooke stand for Pat
+# OOPS We're under construction
+
+[Take me to sales](/HTML/sales.html)
+
