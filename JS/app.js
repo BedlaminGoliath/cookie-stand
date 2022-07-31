@@ -42,7 +42,7 @@ let seattle = {
     let list = document.getElementById('seattle');
     for (let i = 0;i< storeHours.length ; i++){
       let li = document.createElement('li');
-      li.innerText = ` ${storeHours[i]} ${this.avgSales[i]} cookies`;
+      li.innerText = ` ${storeHours[i]}: ${this.avgSales[i]} cookies`;
       list.appendChild(li);
     }
 
@@ -70,7 +70,7 @@ let tokyo = {
     let list = document.getElementById('tokyo');
     for (let i = 0;i< storeHours.length ; i++){
       let li = document.createElement('li');
-      li.innerText = `${storeHours[i]} ${this.avgSales[i]} cookies`;
+      li.innerText = `${storeHours[i]}: ${this.avgSales[i]} cookies`;
       list.appendChild(li);
     }
     console.log(list);
@@ -96,7 +96,7 @@ let dubai = {
     let list = document.getElementById('dubai');
     for (let i = 0;i< storeHours.length ; i++){
       let li = document.createElement('li');
-      li.innerText =`${storeHours[i]} ${this.avgSales[i]} cookies`;
+      li.innerText =`${storeHours[i]}: ${this.avgSales[i]} cookies`;
       list.appendChild(li);
     }
   }
@@ -121,7 +121,7 @@ let paris = {
     let list = document.getElementById('paris');
     for (let i = 0;i< storeHours.length ; i++){
       let li = document.createElement('li');
-      li.innerText =`${storeHours[i]} ${this.avgSales[i]} cookies`;
+      li.innerText =`${storeHours[i]}: ${this.avgSales[i]} cookies`;
       list.appendChild(li);
     }
   }
@@ -146,7 +146,7 @@ let lima = {
     let list = document.getElementById('lima');
     for (let i = 0;i< storeHours.length ; i++){
       let li = document.createElement('li');
-      li.innerText =`${storeHours[i]} ${this.avgSales[i]} cookies`;
+      li.innerText =`${storeHours[i]}: ${this.avgSales[i]} cookies`;
       list.appendChild(li);
     }
   }
