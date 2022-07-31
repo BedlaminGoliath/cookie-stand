@@ -56,7 +56,7 @@ let tokyo = {
     for(let j = 0; j<storeHours.length; j++){
       console.log(storeHours);
       let randomCustomers = randomNumberCustomers(this.minCust, this.maxCust);
-      let avgCookieSales = (randomCustomers * this.avgCookie);
+      let avgCookieSales = Math.ceil((randomCustomers * this.avgCookie));
       this.avgSales.push(avgCookieSales);
     }
   },
@@ -67,10 +67,11 @@ let tokyo = {
       let li = document.createElement('li');
       li.textContent= this.avgSales[i];
       list.appendChild(li);
-      console.log(list);
     }
+    console.log(list);
   }
 };
+tokyo.render();
 
 let dubai = {
   minCust: 11,
@@ -81,7 +82,7 @@ let dubai = {
     for(let j = 0; j<storeHours.length; j++){
       console.log(storeHours);
       let randomCustomers = randomNumberCustomers(this.minCust, this.maxCust);
-      let avgCookieSales = (randomCustomers * this.avgCookie);
+      let avgCookieSales = Math.ceil((randomCustomers * this.avgCookie));
       this.avgSales.push(avgCookieSales);
     }
   },
@@ -95,6 +96,7 @@ let dubai = {
     }
   }
 };
+dubai.render();
 
 let paris = {
   minCust: 20,
@@ -105,7 +107,7 @@ let paris = {
     for(let j = 0; j<storeHours.length; j++){
       console.log(storeHours);
       let randomCustomers = randomNumberCustomers(this.minCust, this.maxCust);
-      let avgCookieSales = (randomCustomers * this.avgCookie);
+      let avgCookieSales = Math.ceil((randomCustomers * this.avgCookie));
       this.avgSales.push(avgCookieSales);
     }
   },
@@ -119,6 +121,7 @@ let paris = {
     }
   }
 };
+paris.render();
 
 let lima = {
   minCust: 2,
@@ -129,7 +132,7 @@ let lima = {
     for(let j = 0; j<storeHours.length; j++){
       console.log(storeHours);
       let randomCustomers = randomNumberCustomers(this.minCust, this.maxCust);
-      let avgCookieSales = (randomCustomers * this.avgCookie);
+      let avgCookieSales = Math.ceil((randomCustomers * this.avgCookie));
       this.avgSales.push(avgCookieSales);
     }
   },
@@ -143,7 +146,7 @@ let lima = {
     }
   }
 };
-
+lima.render();
 
 // console.log(storeLocation);
 
