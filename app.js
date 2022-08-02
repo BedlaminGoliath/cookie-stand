@@ -56,7 +56,6 @@ let tokyo = {
       li.innerText = `${storeHours[i]}: ${this.avgSales[i]} cookies`;
       list.appendChild(li);
     }
-    console.log(list);
   }
 };
 tokyo.render();
@@ -154,16 +153,21 @@ function Location(minCust,maxCust, avgCookie){
 }
 
 
-let compton = new Location(23, 65, 6.3);
+let seattle1 = new Location(23, 65, 6.3);
+seattle1.avgSalesFunction();
+console.log(seattle1);
 
-compton.avgSalesFunction();
-console.log(compton);
+
+let tokyo1 = new Location(3, 24, 1.2);
+tokyo1.avgSalesFunction();
+
+console.log(tokyo1);
 
 
-let edmonds = new Location (12 , 14, 63);
+// let edmonds = new Location (12 , 14, 63);
 
-edmonds.avgSalesFunction();
-console.log(edmonds);
+// edmonds.avgSalesFunction();
+// console.log(edmonds);
 
 
 // trying prototype constructor needs to assign output to avgSales key
