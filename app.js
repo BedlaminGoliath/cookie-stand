@@ -144,18 +144,45 @@ function Location(minCust,maxCust, avgCookie){
   this.avgCookieSales = this.avgSales;
 }
 
-let Edmonds = new Location (12, 32, 9);
+
+
+console.log(Edmonds);
 
 Location.prototype.printSelf = function () {
   console.log(this);
 };
 
 // trying prototype constructor needs to assign output to avgSales key
-Location.prototype.randomNumberCustomers = function(){
-  for(let i = 0; i<storeHours.length; i++){
-    console.log(storeHours);
-    let randomCustomers = randomNumberCustomers(this.minCust, this.maxCust);
-    let avgCookieSales = Math.ceil((randomCustomers * this.avgCookie));
-    this.avgSales.push(avgCookieSales);
+// Location.prototype.randomNumberCustomers = function(){
+//   for(let i = 0; i<storeHours.length; i++){
+//     console.log(storeHours);
+//     let randomCustomers = randomNumberCustomers(this.minCust, this.maxCust);
+//     let avgCookieSales = Math.ceil((randomCustomers * this.avgCookie));
+//     this.avgSales.push(avgCookieSales);
+//   }
+//   console.log(this.avgCookieSales);
+// };
+// Edmonds.randomNumberCustomers();
+
+let Edmonds = new Location (12, 32, 9);
+let Compton = new Location (8, 14, 30);
+
+const locationMethod = {
+  render() {
+    this.avgSalesFunction();
+    let list = document.getElementById('lima');
+    for (let i = 0;i< storeHours.length ; i++){
+      let li = document.createElement('li');
+      li.innerText =`${storeHours[i]}: ${this.avgSales[i]} cookies`;
+      list.appendChild(li);
+    }
+  },
+  avgSalesFunction: function(){
+    for(let j = 0; j<storeHours.length; j++){
+      console.log(storeHours);
+      let randomCustomers = randomNumberCustomers(this.minCust, this.maxCust);
+      let avgCookieSales = Math.ceil((randomCustomers * this.avgCookie));
+      this.avgSales.push(avgCookieSales);
+    }
   }
 };
