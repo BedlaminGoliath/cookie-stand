@@ -141,7 +141,7 @@ function Location(minCust,maxCust, avgCookie){
   this.minCust = minCust;
   this.maxCust = maxCust;
   this.avgCookie = avgCookie;
-  // this.avgSales = [];
+  this.avgSales = [];
   this.avgSalesFunction = function(){
     for(let j = 0; j<storeHours.length; j++){
       console.log(storeHours);
