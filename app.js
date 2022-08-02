@@ -164,25 +164,5 @@ Location.prototype.printSelf = function () {
 // };
 // Edmonds.randomNumberCustomers();
 
-let Edmonds = new Location (12, 32, 9);
-let Compton = new Location (8, 14, 30);
 
-const locationMethod = {
-  render() {
-    this.avgSalesFunction();
-    let list = document.getElementById('lima');
-    for (let i = 0;i< storeHours.length ; i++){
-      let li = document.createElement('li');
-      li.innerText =`${storeHours[i]}: ${this.avgSales[i]} cookies`;
-      list.appendChild(li);
-    }
-  },
-  avgSalesFunction: function(){
-    for(let j = 0; j<storeHours.length; j++){
-      console.log(storeHours);
-      let randomCustomers = randomNumberCustomers(this.minCust, this.maxCust);
-      let avgCookieSales = Math.ceil((randomCustomers * this.avgCookie));
-      this.avgSales.push(avgCookieSales);
-    }
-  }
-};
+
