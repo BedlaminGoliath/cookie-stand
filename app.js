@@ -141,12 +141,23 @@ function Location(minCust,maxCust, avgCookie){
   this.minCust = minCust;
   this.maxCust = maxCust;
   this.avgCookie = avgCookie;
-  this.avgCookieSales = this.avgSales;
+  // this.avgSales = [];
+  this.avgSalesFunction = function(){
+    for(let j = 0; j<storeHours.length; j++){
+      console.log(storeHours);
+      let randomCustomers = randomNumberCustomers(this.minCust, this.maxCust);
+      let avgCookieSales = Math.ceil((randomCustomers * this.avgCookie));
+      this.avgSales.push(avgCookieSales);
+    }
+  };
 }
 
 
 
-console.log(Edmonds);
+let edmonds = new Location (12 , 14, 63);
+
+edmonds.avgSalesFunction();
+console.log(edmonds);
 
 Location.prototype.printSelf = function () {
   console.log(this);
