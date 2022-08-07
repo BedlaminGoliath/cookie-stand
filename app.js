@@ -1,204 +1,203 @@
 'use strict';
-// create a random number generator with the parameters being min and max cust
+
+
 function randomNumberCustomers(minCust, maxCust){
   return Math.floor(Math.random() * (maxCust - minCust + 1) + minCust);
 }
+function totalHours ( ){
 
-let storeHours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm','1pm', '2pm', '3pm','4pm', '5pm', '6pm', '7pm'];
 
-let seattle = {
-  minCust: 23,
-  maxCust: 65 ,
-  avgCookie:6.3 ,
-  avgSales:[],
+}
 
-  // random number function
-  avgSalesFunction: function(){
-    for(let i = 0; i<storeHours.length; i++){
-      console.log(storeHours);
-      let randomCustomers = randomNumberCustomers(this.minCust, this.maxCust);
-      let avgCookieSales = Math.ceil((randomCustomers * this.avgCookie));
-      this.avgSales.push(avgCookieSales);
-    }
-  },
-  // render function
-  render() {
-    this.avgSalesFunction();
-    let list = document.getElementById('seattle');
-    for (let i = 0;i< storeHours.length ; i++){
-      let li = document.createElement('li');
-      li.innerText = ` ${storeHours[i]}: ${this.avgSales[i]} cookies`;
-      list.appendChild(li);
-    }
+let storeHours = [ '6am', '7am', '8am', '9am', '10am', '11am', '12pm','1pm', '2pm', '3pm','4pm', '5pm', '6pm', '7pm'];
 
-  }
-};
-seattle.render();
+let allStores = [];
 
-let tokyo = {
-  minCust: 3,
-  maxCust: 24,
-  avgCookie: 1.2,
-  avgSales:[],
-  avgSalesFunction: function(){
-    for(let j = 0; j<storeHours.length; j++){
-      console.log(storeHours);
-      let randomCustomers = randomNumberCustomers(this.minCust, this.maxCust);
-      let avgCookieSales = Math.ceil((randomCustomers * this.avgCookie));
-      this.avgSales.push(avgCookieSales);
-    }
-  },
-  render() {
-    this.avgSalesFunction();
-    let list = document.getElementById('tokyo');
-    for (let i = 0;i< storeHours.length ; i++){
-      let li = document.createElement('li');
-      li.innerText = `${storeHours[i]}: ${this.avgSales[i]} cookies`;
-      list.appendChild(li);
-    }
-  }
-};
-tokyo.render();
+let storeTotal = [];
 
-let dubai = {
-  minCust: 11,
-  maxCust: 38 ,
-  avgCookie: 3.7,
-  avgSales:[],
-  avgSalesFunction: function(){
-    for(let j = 0; j<storeHours.length; j++){
-      console.log(storeHours);
-      let randomCustomers = randomNumberCustomers(this.minCust, this.maxCust);
-      let avgCookieSales = Math.ceil((randomCustomers * this.avgCookie));
-      this.avgSales.push(avgCookieSales);
-    }
-  },
-  render() {
-    this.avgSalesFunction();
-    let list = document.getElementById('dubai');
-    for (let i = 0;i< storeHours.length ; i++){
-      let li = document.createElement('li');
-      li.innerText =`${storeHours[i]}: ${this.avgSales[i]} cookies`;
-      list.appendChild(li);
-    }
-  }
-};
-dubai.render();
+let locationTotals= [];
 
-let paris = {
-  minCust: 20,
-  maxCust: 38,
-  avgCookie: 2.3,
-  avgSales:[],
-  avgSalesFunction: function(){
-    for(let j = 0; j<storeHours.length; j++){
-      console.log(storeHours);
-      let randomCustomers = randomNumberCustomers(this.minCust, this.maxCust);
-      let avgCookieSales = Math.ceil((randomCustomers * this.avgCookie));
-      this.avgSales.push(avgCookieSales);
-    }
-  },
-  render() {
-    this.avgSalesFunction();
-    let list = document.getElementById('paris');
-    for (let i = 0;i< storeHours.length ; i++){
-      let li = document.createElement('li');
-      li.innerText =`${storeHours[i]}: ${this.avgSales[i]} cookies`;
-      list.appendChild(li);
-    }
-  }
-};
-paris.render();
-
-let lima = {
-  minCust: 2,
-  maxCust: 16,
-  avgCookie: 4.6,
-  avgSales:[],
-  avgSalesFunction: function(){
-    for(let j = 0; j<storeHours.length; j++){
-      console.log(storeHours);
-      let randomCustomers = randomNumberCustomers(this.minCust, this.maxCust);
-      let avgCookieSales = Math.ceil((randomCustomers * this.avgCookie));
-      this.avgSales.push(avgCookieSales);
-    }
-  },
-  render() {
-    this.avgSalesFunction();
-    let list = document.getElementById('lima');
-    for (let i = 0;i< storeHours.length ; i++){
-      let li = document.createElement('li');
-      li.innerText =`${storeHours[i]}: ${this.avgSales[i]} cookies`;
-      list.appendChild(li);
-    }
-  }
-};
-lima.render();
+// =========================================================================================
+// =============================factory and avg sales things============================
 
 // constructor function: WORKING
-function Location(minCust,maxCust, avgCookie){
+function Location(minCust,maxCust, avgCookie,name ){
+  this.name = name;
   this.minCust = minCust;
   this.maxCust = maxCust;
   this.avgCookie = avgCookie;
   this.avgSales = [];
-  this.avgSalesFunction = function(){
-    for(let j = 0; j<storeHours.length; j++){
-      console.log(storeHours);
-      let randomCustomers = randomNumberCustomers(this.minCust, this.maxCust);
-      let avgCookieSales = Math.ceil((randomCustomers * this.avgCookie));
-      this.avgSales.push(avgCookieSales);
-    }
+  allStores.push(this);
+  // this.daytots = 0;
+  this.dailyValue = 0;
 
-  };
 }
 
 
-let seattle1 = new Location(23, 65, 6.3);
-seattle1.avgSalesFunction();
-console.log(seattle1);
+
+// average sales function
+Location.prototype.avgSalesFunction = function(){
+  for ( let i = 0; i < storeHours.length; i++){
+    let randomCustomers = randomNumberCustomers(this.minCust, this.maxCust);
+    let avgCookieSales = Math.ceil((randomCustomers * this.avgCookie));
+    console.log(avgCookieSales);
+    this.avgSales.push(avgCookieSales);
+
+  }
+  for (let i = 0; i < this.avgSales.length; i++){
+    this.dailyValue += this.avgSales[i];
+  }
+
+};
+
+// ==============================================
+// ================Rendering things====================================
 
 
-let tokyo1 = new Location(3, 24, 1.2);
-tokyo1.avgSalesFunction();
+// render function
+Location.prototype.render = function(){
+  let table = document.getElementById('tbody');
+  this.avgSalesFunction();
+  console.log(this);
 
-console.log(tokyo1);
+  let tableRow = document.createElement('tr');
+
+  table.appendChild(tableRow);
+
+  let tabledata = document.createElement('td');
+  tabledata.textContent = this.name;
+  tableRow.appendChild(tabledata);
+
+  for (let i = 0;i< storeHours.length ; i++){
+    let td = document.createElement('td');
+    td.innerText = `${this.avgSales[i]} cookies`;
+    tableRow.appendChild(td);
+    console.log(storeHours.length);
+  }
 
 
-// let edmonds = new Location (12 , 14, 63);
+  const dailyTotal = document.createElement('td');
+  dailyTotal.innerText = this.dailyValue;
+  tableRow.appendChild(dailyTotal);
 
-// edmonds.avgSalesFunction();
-// console.log(edmonds);
 
 
-// trying prototype constructor needs to assign output to avgSales key
-// Location.prototype.randomNumberCustomers = function(){
-//   for(let i = 0; i<storeHours.length; i++){
-//     console.log(storeHours);
-//     let randomCustomers = randomNumberCustomers(this.minCust, this.maxCust);
-//     let avgCookieSales = Math.ceil((randomCustomers * this.avgCookie));
-//     this.avgSales.push(avgCookieSales);
-//   }
-//   console.log(this.avgCookieSales);
+};
+
+function headerRow(){
+
+  const table = document.getElementById('thead');
+
+  let tableRow  = document.createElement ('tr');
+  let tableHeader = document.createElement ('th');
+  table.appendChild(tableRow);
+  tableHeader.innerText = 'hours';
+  tableRow.appendChild(tableHeader);
+  for ( let i = 0; i < storeHours.length; i ++){
+    tableHeader = document.createElement ('th');
+    tableHeader.innerText = storeHours[i];
+    tableRow.appendChild(tableHeader);
+  }
+  const dailyTotal = document.createElement('th');
+  dailyTotal.innerText = 'DAILY-TOTAL';
+  tableRow.appendChild(dailyTotal);
+
+
+}
+
+
+
+new Location(23, 65, 6.3, 'seattle');
+new Location(3, 24, 1.2, 'tokyo');
+new Location(11, 38, 3.7, 'dubai');
+new Location(20, 38, 3.3, 'paris');
+new Location(2, 16, 4.6, 'lima');
+
+(function renderTable (){
+  headerRow();
+  for (let i = 0; i < allStores.length; i++){
+    allStores[i].render();
+  }
+})();
+
+console.log(allStores);
+
+
+
+
+
+
+
+
+// =================================
+// boneyard==============
+// ==================================
+
+// actually rendering the table
+// Location.prototype.actualRendor = function() {
+//   this.avgSalesFunction();
+
+//   let tableBody = document.getElementById('tablebody');
+
+//   let tableRow = document.createElement('tr');
+//   let minCust = document.createElement('td');
+//   let maxCust = document.createElement('td');
+//   let avgCookie = document.createElement('td');
+//   minCust.innerText = this.minCust;
+//   maxCust.innerText = this.maxCust;
+//   avgCookie.innerText = this.avgCookie;
+
+//   // append the 3tds
+//   tableRow.appendChild(minCust);
+//   tableRow.appendChild(maxCust);
+//   tableRow.appendChild(avgCookie);
+//   // append row to table body
+//   tableBody.appendChild(tableRow);
 // };
-// Edmonds.randomNumberCustomers();
 
 
-// const locationMethod = {
-//   render() {
-//     this.avgSalesFunction();
-//     let list = document.getElementById('lima');
-//     for (let i = 0;i< storeHours.length ; i++){
-//       let li = document.createElement('li');
-//       li.innerText =`${storeHours[i]}: ${this.avgSales[i]} cookies`;
-//       list.appendChild(li);
-//     }
-//   },
-//   avgSalesFunction: function(){
-//     for(let j = 0; j<storeHours.length; j++){
-//       console.log(storeHours);
-//       let randomCustomers = randomNumberCustomers(this.minCust, this.maxCust);
-//       let avgCookieSales = Math.ceil((randomCustomers * this.avgCookie));
-//       this.avgSales.push(avgCookieSales);
-//     }
+
+
+// Location.prototype.renderTable = function() {
+
+//  let table = document.getElementById('table');
+//   let tBody = document.createElement('tr');
+//   let locat = document.createElement('th');
+//   locat.innerText = this.Location;
+//   table.appendChild(locat);
+
+//   for(let i = 0; i < this.sales.length; i++){
+// actually rendering the table
+// Location.prototype.actualRendor = function() {
+//   this.avgSalesFunction();
+
+//   let tableBody = document.getElementById('tablebody');
+
+//   let tableRow = document.createElement('tr');
+//   let minCust = document.createElement('td');
+//   let maxCust = document.createElement('td');
+//   let avgCookie = document.createElement('td');
+//   minCust.innerText = this.minCust;
+//   maxCust.innerText = this.maxCust;
+//   avgCookie.innerText = this.avgCookie;
+
+//   // append the 3tds
+//   tableRow.appendChild(minCust);
+//   tableRow.appendChild(maxCust);
+//   tableRow.appendChild(avgCookie);
+//   // append row to table body
+//   tableBody.appendChild(tableRow);
+// };
+//     let sales = document.createElement('td');
+//     sales.innerText = this.sales[i];
+//     tBody.appendChild(sales);
+//     tBody.appendChild(tBody);
 //   }
 // };
+// }
+// };
+
+// renderSales();
+
+
+

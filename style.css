@@ -18,13 +18,47 @@ body
     background-image: linear-gradient(rgb(53, 177, 240), rgb(5, 21, 137));
     /* border-style: solid;5px; */
     border: solid #416420 8px;
-/* }
+ }
+h1 {  
+    text-align: center;
+}
+
+/* sales */
+
+table {
+    /* display: flex; */
+    flex-direction: row;
+    margin: auto;
+    border-spacing: 0px;
+}
+
+table, th, td {
+    border: .5px solid black;
+
+}
+
+th, td {
+    padding: 1rem;
+}
+
+td {
+    background-color: rgba(0, 0, 0, 0.831);
+    color: white;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1rem;
+}
+
 li 
 {
     text-align: center;
     display: inline-block;
-    color: rgb(124, 63, 22);
+    color: rgb(226, 217, 211);
     border: groove rgb(168, 100, 168)  1px;
-    padding: 0px 16px
+    /* padding: 0px 16px */
     
 }

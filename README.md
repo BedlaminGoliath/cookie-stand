@@ -22,3 +22,29 @@ function randomNumberCustomers(minCust, maxCust){
   }
 
   houseparty
+
+
+
+  Location.prototype.render = function(){
+
+  this.avgSalesFunction();
+
+  const tableRow = document.createElement('tr');
+  let tabledata = document.createElement('td');
+
+  tabledata.textContent = this.name;
+  tableRow.appendChild(tabledata);
+
+  // let list = document.createElement('');
+  // section.appendChild(list);
+
+  for (let i = 0;i< storeHours.length ; i++){
+    tabledata = document.createElement('td');
+    tabledata.innerText =this.avgSales[i];
+    tableRow.appendChild(tabledata);
+  }
+  console.log(tabledata);
+  // const tableHeader = document.createElement('th');
+  // tableHeader.innerText
+
+};
