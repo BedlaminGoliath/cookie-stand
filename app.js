@@ -1,63 +1,65 @@
 'use strict';
 
-
-function randomNumberCustomers(minCust, maxCust){
-  return Math.floor(Math.random() * (maxCust - minCust + 1) + minCust);
-}
-function totalHours ( ){
-
-
-}
-
 let storeHours = [ '6am', '7am', '8am', '9am', '10am', '11am', '12pm','1pm', '2pm', '3pm','4pm', '5pm', '6pm', '7pm'];
 
 let allStores = [];
-
-let storeTotal = [];
-
-let locationTotals= [];
 
 // =========================================================================================
 // =============================factory and avg sales things============================
 
 // constructor function: WORKING
-function Location(minCust,maxCust, avgCookie,name ){
+function Location(name, minCust,maxCust, avgCookie){
   this.name = name;
   this.minCust = minCust;
   this.maxCust = maxCust;
   this.avgCookie = avgCookie;
+  this.randomCustomersEachHour = [];
   this.avgSales = [];
-  allStores.push(this);
   // this.daytots = 0;
   this.dailyValue = 0;
 
+  allStores.push(this);
 }
 
-
+function random(min, max){
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+Location.prototype.randomNumberCustomers = function(){
+  for (let i = 0; i < storeHours.length; i++){
+    this.randomCustomersEachHour.push(random(this.minCust, this.maxCust));
+  }
+};
 
 // average sales function
 Location.prototype.avgSalesFunction = function(){
+  this.randomNumberCustomers();
   for ( let i = 0; i < storeHours.length; i++){
-    let randomCustomers = randomNumberCustomers(this.minCust, this.maxCust);
-    let avgCookieSales = Math.ceil((randomCustomers * this.avgCookie));
-    console.log(avgCookieSales);
+    let avgCookieSales = Math.ceil((this.randomCustomersEachHour[i] * this.avgCookie));
+    console.log(typeof(avgCookieSales));
     this.avgSales.push(avgCookieSales);
-
+    this.dailyValue += avgCookieSales;
   }
-  for (let i = 0; i < this.avgSales.length; i++){
-    this.dailyValue += this.avgSales[i];
-  }
+  // for (let i = 0; i < this.avgSales.length; i++){
+  //   this.dailyValue += this.avgSales[i];
+  // }
 
 };
 
+new Location('seattle', 23, 65, 6.3);
+new Location('tokyo', 3, 24, 1.2 );
+new Location('dubai', 11, 38, 3.7);
+new Location('paris', 20, 38, 3.3);
+new Location('lima', 2, 16, 4.6);
+
+console.log(allStores);
 // ==============================================
 // ================Rendering things====================================
 
 
 // render function
 Location.prototype.render = function(){
-  let table = document.getElementById('tbody');
   this.avgSalesFunction();
+  let table = document.getElementById('tbody');
   console.log(this);
 
   let tableRow = document.createElement('tr');
@@ -101,103 +103,63 @@ function headerRow(){
   const dailyTotal = document.createElement('th');
   dailyTotal.innerText = 'DAILY-TOTAL';
   tableRow.appendChild(dailyTotal);
-
-
 }
 
 
 
-new Location(23, 65, 6.3, 'seattle');
-new Location(3, 24, 1.2, 'tokyo');
-new Location(11, 38, 3.7, 'dubai');
-new Location(20, 38, 3.3, 'paris');
-new Location(2, 16, 4.6, 'lima');
+function renderFooter(){
+
+  const table = document.getElementById('tfoot');
+
+  let tableRow = document.createElement ('tr');
+  let tableData = document.createElement ('td');
+  table.appendChild(tableRow);
+  tableData.innerText = ('total-hours sale');
+  tableRow.appendChild(tableData);
+  for (let i = 0; i < storeHours.length; i++){
+    let locationTotals = 0;
+    for (let j = 0; j < allStores.length; j++){
+      // console.log(allStores[j].avgSales[i]);
+      let thisHour = allStores[j].avgSales[i];
+      locationTotals += thisHour;
+    }
+
+    let hourlyTotal = document.createElement('td');
+    hourlyTotal.innerText = locationTotals;
+    tableRow.appendChild(hourlyTotal);
+  }
+
+}
+
 
 (function renderTable (){
   headerRow();
+  // createTableFooter();
+  
   for (let i = 0; i < allStores.length; i++){
     allStores[i].render();
   }
+  console.log(allStores);
 })();
 
 console.log(allStores);
 
+// let locationForm = document.getElementById('addLocation');
+// locationForm.addEventListener('submit', locationForm);
 
+// step 4
+// function addEventListener (event){
+//   event.preventDefault();
+//   let form = event.target;
+//   let minCust = form.minCust.value;
+//   let maxCust = form.maxCust.value;
+//   let avgCookie = form.avgCookie.value;
+//   console.log(minCust, maxCust, avgCookie);
 
-
-
-
-
-
-// =================================
-// boneyard==============
-// ==================================
-
-// actually rendering the table
-// Location.prototype.actualRendor = function() {
-//   this.avgSalesFunction();
-
-//   let tableBody = document.getElementById('tablebody');
-
-//   let tableRow = document.createElement('tr');
-//   let minCust = document.createElement('td');
-//   let maxCust = document.createElement('td');
-//   let avgCookie = document.createElement('td');
-//   minCust.innerText = this.minCust;
-//   maxCust.innerText = this.maxCust;
-//   avgCookie.innerText = this.avgCookie;
-
-//   // append the 3tds
-//   tableRow.appendChild(minCust);
-//   tableRow.appendChild(maxCust);
-//   tableRow.appendChild(avgCookie);
-//   // append row to table body
-//   tableBody.appendChild(tableRow);
-// };
-
-
-
-
-// Location.prototype.renderTable = function() {
-
-//  let table = document.getElementById('table');
-//   let tBody = document.createElement('tr');
-//   let locat = document.createElement('th');
-//   locat.innerText = this.Location;
-//   table.appendChild(locat);
-
-//   for(let i = 0; i < this.sales.length; i++){
-// actually rendering the table
-// Location.prototype.actualRendor = function() {
-//   this.avgSalesFunction();
-
-//   let tableBody = document.getElementById('tablebody');
-
-//   let tableRow = document.createElement('tr');
-//   let minCust = document.createElement('td');
-//   let maxCust = document.createElement('td');
-//   let avgCookie = document.createElement('td');
-//   minCust.innerText = this.minCust;
-//   maxCust.innerText = this.maxCust;
-//   avgCookie.innerText = this.avgCookie;
-
-//   // append the 3tds
-//   tableRow.appendChild(minCust);
-//   tableRow.appendChild(maxCust);
-//   tableRow.appendChild(avgCookie);
-//   // append row to table body
-//   tableBody.appendChild(tableRow);
-// };
-//     let sales = document.createElement('td');
-//     sales.innerText = this.sales[i];
-//     tBody.appendChild(sales);
-//     tBody.appendChild(tBody);
-//   }
-// };
+//   new Location (minCust, maxCust, avgCookie, 'edmonds');
+//   console.log(edmonds);
 // }
-// };
-
-// renderSales();
 
 
 
+renderFooter();

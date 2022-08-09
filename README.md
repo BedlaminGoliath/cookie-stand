@@ -2,49 +2,57 @@
 
 [Take me to sales](/sales.html)
 
-<!-- java logic for randomnumber -->
-function randomNumberCustomers(minCust, maxCust){
-  return Math.floor(Math.random() * (maxCust - minCust + 1) + minCust);
-}
 
------
+<!--    <form id="newLocations">
+        <fieldset>
+            <legend>insert Name</legend>
+            <label> location Name
+                <input type="text" name="locationName">
+            </label>    
+            <label> maximum customer
+                <input type="text" name="maximumcustomer" value="maximumcustomer">
+            </label>
+            <label> minimun customer
+                <input type="text" name="minimunCustomer" value="minimumCustomer">
+            </label>  
+       </fieldset>
 
-<!-- java logic for rendor -->
-  render() {
-    this.avgSalesFunction();
-    let list = document.getElementById('seattle');
-    for (let i = 0;i< storeHours.length ; i++){
-      let li = document.createElement('li');
-      li.innerText = ` ${storeHours[i]}: ${this.avgSales[i]} cookies`;
-      list.appendChild(li);
-    }
+       <fieldset>
+            <legend>insert Name</legend>
+            <label> input 1
+                <input type="text" name="input1">
+            </label>    
+            <label> Chocolate
+                <input type="radio" name="iceCreamFlavor" value="chocolate">
+            </label>
+            <label"> Vanilla
+                <input type="radio" name="iceCramFlavor" value="vanilla">
+            </label>
+        </fieldset>
+        <input type="submit"> -->
 
-  }
+        //   let tableBody = document.getElementById('tablebody');
+<!-- 
+//   let tableRow = document.createElement('tr');
+//   let minCust = document.createElement('td');
+//   let maxCust = document.createElement('td');
+//   let avgCookie = document.createElement('td');
+//   minCust.innerText = this.minCust;
+//   maxCust.innerText = this.maxCust;
+//   avgCookie.innerText = this.avgCookie;
 
-  houseparty
-
-
-
-  Location.prototype.render = function(){
-
-  this.avgSalesFunction();
-
-  const tableRow = document.createElement('tr');
-  let tabledata = document.createElement('td');
-
-  tabledata.textContent = this.name;
-  tableRow.appendChild(tabledata);
-
-  // let list = document.createElement('');
-  // section.appendChild(list);
-
-  for (let i = 0;i< storeHours.length ; i++){
-    tabledata = document.createElement('td');
-    tabledata.innerText =this.avgSales[i];
-    tableRow.appendChild(tabledata);
-  }
-  console.log(tabledata);
-  // const tableHeader = document.createElement('th');
-  // tableHeader.innerText
-
-};
+//   // append the 3tds
+//   tableRow.appendChild(minCust);
+//   tableRow.appendChild(maxCust);
+//   tableRow.appendChild(avgCookie);
+//   // append row to table body
+//   tableBody.appendChild(tableRow);
+// };
+//     let sales = document.createElement('td');
+//     sales.innerText = this.sales[i];
+//     tBody.appendChild(sales);
+//     tBody.appendChild(tBody);
+//   }
+// };
+// }
+// }; -->

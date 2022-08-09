@@ -11,34 +11,76 @@ img
     display: block;
     margin-left: auto;
     margin-right: auto;
+    padding: auto;
 
 }
+
 body
 {
     background-image: linear-gradient(rgb(53, 177, 240), rgb(5, 21, 137));
     /* border-style: solid;5px; */
     border: solid #416420 8px;
+    display: flex;
+    flex-direction: colum;
+    gap: 30px;
  }
 h1 {  
     text-align: center;
 }
+ul{
+    display: flex;
+    justify-content: space-around;
+}
+li{
+    display: flex;
+    font-size: 2rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding: auto;
+    color: #416420;
+}
+h2{
+    font-size: 5rem;
+    display: flex;
+    justify-content: center;
 
+}
+body{
+    display: flex;
+    flex-direction: column;
+}
+section {
+    display: flex;
+    flex-direction: column;
+
+}
+
+
+
+/* ======================================================================== */
 /* sales */
-
-table {
-    /* display: flex; */
+/* ========================================================================== */
+/* /* table { */
+    display: flex;
     flex-direction: row;
     margin: auto;
-    border-spacing: 0px;
+    border-spacing: 0px; */
 }
 
 table, th, td {
     border: .5px solid black;
+    margin: auto;
+    border-spacing: 1rem;
 
 }
 
 th, td {
     padding: 1rem;
+    border-radius: 25px;
+    background:  #d97e8e;;
+    padding: 20px;
+    /* width: 200px; */
+    /* height: 150px; */
 }
 
 td {
@@ -61,4 +103,18 @@ li
     border: groove rgb(168, 100, 168)  1px;
     /* padding: 0px 16px */
     
+}
+#addLocation{
+    display: flex;
+    flex-direction: column;
+    margin: 3rem;
+}
+legend{
+    display: flex;
+    font-size: 3rem;
+}
+input{
+    display: flex;
+    margin: 2rem;
+    justify-content: center;
 }
