@@ -135,7 +135,7 @@ function renderFooter(){
 (function renderTable (){
   headerRow();
   // createTableFooter();
-  
+
   for (let i = 0; i < allStores.length; i++){
     allStores[i].render();
   }
@@ -144,21 +144,20 @@ function renderFooter(){
 
 console.log(allStores);
 
-// let locationForm = document.getElementById('addLocation');
-// locationForm.addEventListener('submit', locationForm);
+let locationForm = document.getElementById('addLocation');
+locationForm.addEventListener('submit', addEventListener);
 
-// step 4
-// function addEventListener (event){
-//   event.preventDefault();
-//   let form = event.target;
-//   let minCust = form.minCust.value;
-//   let maxCust = form.maxCust.value;
-//   let avgCookie = form.avgCookie.value;
-//   console.log(minCust, maxCust, avgCookie);
+function addEventListener (event){
+  event.preventDefault();
+  let form = event.target;
+  let minCust = form.minCust.value;
+  let maxCust = form.maxCust.value;
+  let avgCookie = form.avgCookie.value;
+  console.log(minCust, maxCust, avgCookie);
 
-//   new Location (minCust, maxCust, avgCookie, 'edmonds');
-//   console.log(edmonds);
-// }
+  new Location (minCust, maxCust, avgCookie, 'edmonds');
+
+}
 
 
 

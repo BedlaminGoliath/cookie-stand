@@ -89,10 +89,12 @@ td {
 }
 
 form {
+    background-color: #d97e8e;
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-top: 1rem;
+    border: groove rgb(168, 100, 168)  1px;
 }
 
 li 
@@ -117,4 +119,13 @@ input{
     display: flex;
     margin: 2rem;
     justify-content: center;
+}
+form{
+    display: flex;
+    flex-direction: row;
+    text-shadow: 2px 1px #eee3e5;
+    border: groove rgb(168, 100, 168)  1px;
+}
+fieldset{
+    border-radius: 1rem;
 }
