@@ -163,3 +163,5 @@ console.log(allStores);
 
 
 renderFooter();
+
+// comment to add to reload file
