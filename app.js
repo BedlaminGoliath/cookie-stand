@@ -4,6 +4,8 @@ let storeHours = [ '6am', '7am', '8am', '9am', '10am', '11am', '12pm','1pm', '2p
 
 let allStores = [];
 
+let tableFooter = document.createElement ('tr');
+
 // =========================================================================================
 // =============================factory and avg sales things============================
 
@@ -111,11 +113,11 @@ function renderFooter(){
 
   const table = document.getElementById('tfoot');
 
-  let tableRow = document.createElement ('tr');
+
   let tableData = document.createElement ('td');
-  table.appendChild(tableRow);
+  table.appendChild(tableFooter);
   tableData.innerText = ('total-hours sale');
-  tableRow.appendChild(tableData);
+  tableFooter.appendChild(tableData);
   for (let i = 0; i < storeHours.length; i++){
     let locationTotals = 0;
     for (let j = 0; j < allStores.length; j++){
@@ -126,7 +128,7 @@ function renderFooter(){
 
     let hourlyTotal = document.createElement('td');
     hourlyTotal.innerText = locationTotals;
-    tableRow.appendChild(hourlyTotal);
+    tableFooter.appendChild(hourlyTotal);
   }
 
 }
@@ -150,12 +152,18 @@ locationForm.addEventListener('submit', addEventListener);
 function addEventListener (event){
   event.preventDefault();
   let form = event.target;
+  let newLocation = form.newLocation.value;
   let minCust = form.minCust.value;
   let maxCust = form.maxCust.value;
   let avgCookie = form.avgCookie.value;
-  console.log(minCust, maxCust, avgCookie);
+  // console.log(minCust, maxCust, avgCookie);
 
-  new Location (minCust, maxCust, avgCookie, 'edmonds');
+  let location = new Location (newLocation, minCust, maxCust, avgCookie);
+
+
+  location.render();
+  tableFooter.innerHTML = '';
+  renderFooter();
 
 }
 
