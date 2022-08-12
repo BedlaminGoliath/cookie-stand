@@ -20,6 +20,9 @@ img
     justify-content: space-around;
     padding: 6rem;
 }
+#font{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
 p{
     font-size: 2rem;
     display: flex;
@@ -102,7 +105,7 @@ section {
 footer{
     display: flex;
     flex-direction: row;
-    
+
 }
 h3{
     font-size: 2rem;
